@@ -4,17 +4,24 @@ default_fortunes = path.resolve __dirname, "testFortunes"
 
 module.exports = class Fortune
 	constructor: ( @fortune_path = default_fortunes ) ->
-		files = fs.readdirSync(@fortune_path)
-		excludes = ///
-		.(u8|dat|bak)$
-		///
-		# exclude the extraneous files
-		@fortune_list = ( f for f in files when ! f.match excludes )
+		exists = fs.existsSync @fortune_path
+		if exists 
+			files = fs.readdirSync(@fortune_path)
+			excludes = ///
+			.(u8|dat|bak)$
+			///
+			# exclude the extraneous files
+			@fortune_list = ( f for f in files when ! f.match excludes )
+		else
+			@fortune_list = []
 
 	list_cookies: () ->
 		return @fortune_list
 
 	tell: ( args = [] ) ->
+		# console.log "fortune_list", @fortune_list
+		if not @fortune_list #fail on empty list
+			return "No fortunes found!"
 		# getto option parsing, but works well enough
 		short = args.indexOf("-s");
 		args.splice(short, 1 ) if short > -1 
