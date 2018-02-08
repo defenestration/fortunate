@@ -1,0 +1,24 @@
+{
+  "name": "fortunate",
+  "version": "1.0.0",
+  "description": "unix fortune clone for node/coffeescript/javascript",
+  "main": "fortunate.coffee",
+  "scripts": {
+    "test": "coffee test.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/defenestration/fortunate.git"
+  },
+  "keywords": [
+    "fortune",
+    "quotes"
+  ],
+  "author": "defenestration",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/defenestration/fortunate/issues"
+  },
+  "homepage": "https://github.com/defenestration/fortunate#readme",
+  "dependencies": {}
+}
