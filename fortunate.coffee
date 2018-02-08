@@ -32,15 +32,18 @@ module.exports = class Fortune
 		list_files = args.indexOf("-f");
 		args.splice(list_files, 1 ) if list_files > -1
 		
+		#remaining arg if exists should be a cookie file
+		cfile = args.splice[0]
+
 		#if we got -f, just show possible fortune cookie files 
 		return "#{@fortune_list.join ", "}" if list_files > -1 
 		
-		if args[2]
-			if @fortune_list.includes args[2]  #pull fortune from specific cookie file
+		if cfile
+			if @fortune_list.includes cfile  #pull fortune from specific cookie file
 				#console.log args[2]
-				fortune_file = args[2]
+				fortune_file = cfile
 			else
-				return "Fortune file not found! #{args[2]}"
+				return "Fortune file not found! #{cfile}"
 
 		else #pull a random fortune cookie file
 			fortune_file = @fortune_list[ Math.floor( Math.random() * @fortune_list.length ) ]
@@ -59,9 +62,9 @@ module.exports = class Fortune
 			fortunes = short_fortunes
 
 		# the fortunes array is zero indexed, but to match array.length, and to require sensable user input, it should be 1 indexed.
-		if args[3]
-			fortune_num = args[3] - 1  # 0 indexed for array
-			user_fortune_num = args[3] # 1 indexed, for display
+		if args[1]
+			fortune_num = args[0] # 0 indexed for array
+			user_fortune_num = args[1] # 1 indexed, for display
 		else
 			fortune_num = Math.floor( Math.random()*fortunes.length )
 			user_fortune_num = fortune_num + 1
