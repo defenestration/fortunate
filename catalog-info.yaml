@@ -1,23 +1,22 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: mkdocs
-  description: Docs for Ops
+  name: fortunate
+  description: unix fortune clone for node/coffeescript/javascript
   labels:
     example.com/custom: labelll
   annotations:
     #example.com/service-discovery: artistweb
-    circleci.com/project-slug: github/defenestration/mkdocs
+    # circleci.com/project-slug: github/defenestration/mkdocs
     backstage.io/techdocs-ref: dir:.
   tags:
-    - docs
-    - it
+    - node
   links:
-    - url: https://github.com/defenestration/mkdocs
-      title: mk docs
+    - url: https://github.com/defenestration/fortunate
+      title: fortunate
       icon: dashboard
 spec:
-  type: docs
-  lifecycle: internal
+  type: library
+  lifecycle: production
   owner: defenestration
   system: public-websites
